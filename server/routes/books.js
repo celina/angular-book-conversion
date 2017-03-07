@@ -23,7 +23,7 @@ router.get('/', function(req, res){
     } else {
       // We connected to the database!!!
       // Now, we're gonna' git stuff!!!!!
-      client.query('SELECT * FROM "books";', function(errorMakingQuery, result){
+      client.query('SELECT * FROM "books" ORDER BY id ASC;', function(errorMakingQuery, result){
         done();
         if(errorMakingQuery) {
           console.log('Error making the database query: ', errorMakingQuery);

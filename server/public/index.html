@@ -11,14 +11,15 @@
 </head>
 <body ng-app="BookApp" ng-controller="BookController as bc">
   <h1>Book Shelf</h1>
-  <form>
-    <input name="title" placeholder="Title" ng-model="bc.newBook.title">
-    <input name="author" placeholder="Author" ng-model="bc.newBook.author">
-    <input name="edition" placeholder="Edition" ng-model="bc.newBook.edition">
-    <input name="publisher" placeholder="Publisher" ng-model="bc.newBook.publisher">
+  <form class="col-md-6">
+    
+    <input name="title" placeholder="Title" ng-model="bc.newBook.title" class="form-control">
+    <input name="author" placeholder="Author" ng-model="bc.newBook.author" class="form-control">
+    <input name="edition" placeholder="Edition" ng-model="bc.newBook.edition" class="form-control">
+    <input name="publisher" placeholder="Publisher" ng-model="bc.newBook.publisher" class="form-control">
     <button type="submit" ng-click="bc.addBook()">Click here to add the book!</button>
   </form>
-  <table>
+  <table class="container">
     <thead>
       <tr>
         <th>Title</th>
@@ -34,7 +35,7 @@
         <td><span editable-text="book.author" onaftersave="bc.saveBook(book)">{{book.author || "Empty"}}</span></td>
         <td><span editable-text="book.edition" onaftersave="bc.saveBook(book)">{{book.edition || "Empty"}}</span></td>
         <td><span editable-text="book.publisher" onaftersave="bc.saveBook(book)">{{book.publisher || "Empty"}}</span></td>
-        <td><button ng-click="bc.deleteBook(book.id)">Delete</button></td>
+        <td><button ng-click="bc.deleteBook(book.id)" class="btn btn-danger">Delete</button></td>
       </tr>
     </tbody>
   </table>

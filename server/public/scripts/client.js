@@ -6,7 +6,6 @@ app.run(function(editableOptions) {
 
 app.controller('BookController', ['$http', function($http, $scope) {
 
-  console.log('BookController is loaded');
   var self = this;
   self.bookList = [];
   self.newBook = {};
@@ -19,7 +18,6 @@ getBooks();
       method: 'GET',
       url: '/books'
     }).then(function(response) {
-      console.log(response.data);
       self.bookList = response.data;
     });
   }
@@ -30,7 +28,6 @@ self.addBook = function() {
     url: '/books/new',
     data: self.newBook
   }).then(function(response) {
-    console.log(response);
     getBooks();
     self.newTask = {};
   }, function(response) { // error handling
@@ -45,7 +42,6 @@ self.deleteBook = function(idOfBookToDelete) {
     url: '/books/delete/' + idOfBookToDelete,
   }).then(function(response) {
     getBooks();
-    console.log(response);
   }, function(response) {
     console.log(response);
   });
@@ -59,7 +55,6 @@ self.saveBook = function(bookObject) {
     data: bookObject
   }).then(function(response) {
     getBooks();
-    console.log(response);
   }, function(response) {
     console.log(response);
   });
