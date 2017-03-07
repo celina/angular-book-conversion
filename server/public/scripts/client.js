@@ -6,7 +6,7 @@ app.controller('BookController', ['$http', function($http) {
   self.bookList = [];
   self.newBook = {};
   self.updateBook = {};
-  
+
 getBooks();
 
   function getBooks() {
@@ -47,6 +47,7 @@ self.deleteBook = function(idOfBookToDelete) {
 };
 
 self.saveBook = function(bookObject) {
+  console.log(bookObject);
   $http({
     method: 'PUT',
     url: '/books/save/' + bookObject.id,
