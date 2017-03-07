@@ -11,36 +11,40 @@
 </head>
 <body ng-app="BookApp" ng-controller="BookController as bc">
   <h1>Book Shelf</h1>
-  <form class="col-md-6">
-    
-    <input name="title" placeholder="Title" ng-model="bc.newBook.title" class="form-control">
-    <input name="author" placeholder="Author" ng-model="bc.newBook.author" class="form-control">
-    <input name="edition" placeholder="Edition" ng-model="bc.newBook.edition" class="form-control">
-    <input name="publisher" placeholder="Publisher" ng-model="bc.newBook.publisher" class="form-control">
-    <button type="submit" ng-click="bc.addBook()">Click here to add the book!</button>
+  <form class="col-md-12 form-group" style="margin: 10px;">
+    <div class="col-md-6">
+      <input name="title" placeholder="Title" ng-model="bc.newBook.title" class="form-control">
+      <input name="author" placeholder="Author" ng-model="bc.newBook.author" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <input name="edition" placeholder="Edition" ng-model="bc.newBook.edition" class="form-control">
+      <input name="publisher" placeholder="Publisher" ng-model="bc.newBook.publisher" class="form-control">
+    </div>
+    <div class="col-md-12">
+      <button type="submit" ng-click="bc.addBook()" class="btn btn-primary">Click here to add the book!</button>
+    </div>
   </form>
-  <table class="container">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Edition</th>
-        <th>Publisher</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="book in bc.bookList">
-        <td><span editable-text="book.title" onaftersave="bc.saveBook(book)" >{{book.title || "Empty"}}</span></td>
-        <td><span editable-text="book.author" onaftersave="bc.saveBook(book)">{{book.author || "Empty"}}</span></td>
-        <td><span editable-text="book.edition" onaftersave="bc.saveBook(book)">{{book.edition || "Empty"}}</span></td>
-        <td><span editable-text="book.publisher" onaftersave="bc.saveBook(book)">{{book.publisher || "Empty"}}</span></td>
-        <td><button ng-click="bc.deleteBook(book.id)" class="btn btn-danger">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- <div ng-repeat="book in bc.bookList">
-    {{book.name}}
-  </div> -->
+  <div class="col-md-10">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Edition</th>
+          <th>Publisher</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="book in bc.bookList">
+          <td><span editable-text="book.title" onaftersave="bc.saveBook(book)" >{{book.title || "Empty"}}</span></td>
+          <td><span editable-text="book.author" onaftersave="bc.saveBook(book)">{{book.author || "Empty"}}</span></td>
+          <td><span editable-text="book.edition" onaftersave="bc.saveBook(book)">{{book.edition || "Empty"}}</span></td>
+          <td><span editable-text="book.publisher" onaftersave="bc.saveBook(book)">{{book.publisher || "Empty"}}</span></td>
+          <td><button ng-click="bc.deleteBook(book.id)" class="btn btn-danger btn-xs">&times;</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
