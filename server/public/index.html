@@ -28,12 +28,12 @@
     </thead>
     <tbody>
       <tr ng-repeat="book in bc.bookList">
-        <td>{{book.title}}</td>
+        <td><input ng-model="book.title" placeholder="{{book.title}}" /></td>
         <td>{{book.author}}</td>
         <td>{{book.edition}}</td>
         <td>{{book.publisher}}</td>
-        <td><button>Delete</button></td>
-        <td><button>Save</button></td>
+        <td><button ng-click="bc.deleteBook(book.id)">Delete</button></td>
+        <td><button ng-click="bc.saveBook(book)">Save</button></td>
       </tr>
     </tbody>
   </table>

@@ -5,7 +5,8 @@ app.controller('BookController', ['$http', function($http) {
   var self = this;
   self.bookList = [];
   self.newBook = {};
-
+  self.updateBook = {};
+  
 getBooks();
 
   function getBooks() {
@@ -27,7 +28,33 @@ self.addBook = function() {
     console.log(response);
     getBooks();
     self.newTask = {};
-  }, function errorCallback(response) { // error handling
+  }, function(response) { // error handling
+    console.log(response);
+  });
+}; // end self.addBook
+
+
+self.deleteBook = function(idOfBookToDelete) {
+  $http({
+    method: 'DELETE',
+    url: '/books/delete/' + idOfBookToDelete,
+  }).then(function(response) {
+    getBooks();
+    console.log(response);
+  }, function(response) {
+    console.log(response);
+  });
+};
+
+self.saveBook = function(bookObject) {
+  $http({
+    method: 'PUT',
+    url: '/books/save/' + bookObject.id,
+    data: bookObject
+  }).then(function(response) {
+    getBooks();
+    console.log(response);
+  }, function(response) {
     console.log(response);
   });
 };
