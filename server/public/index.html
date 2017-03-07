@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <title>Books and Databases</title>
   <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="vendors/xeditable.min.js" charset="utf-8"></script>
   <script src="scripts/client.js" charset="utf-8"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles/xeditable.css" rel="stylesheet">
 </head>
 <body ng-app="BookApp" ng-controller="BookController as bc">
   <h1>Book Shelf</h1>
@@ -23,17 +26,15 @@
         <th>Edition</th>
         <th>Publisher</th>
         <th>Delete</th>
-        <th>Save</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="book in bc.bookList">
-        <td><input ng-model="book.title" /></td>
-        <td><input ng-model="book.author"/></td>
-        <td><input ng-model="book.edition"/></td>
-        <td><input ng-model="book.publisher"/></td>
+        <td><span editable-text="book.title" onaftersave="bc.saveBook(book)" >{{book.title || "Empty"}}</span></td>
+        <td><span editable-text="book.author" onaftersave="bc.saveBook(book)">{{book.author || "Empty"}}</span></td>
+        <td><span editable-text="book.edition" onaftersave="bc.saveBook(book)">{{book.edition || "Empty"}}</span></td>
+        <td><span editable-text="book.publisher" onaftersave="bc.saveBook(book)">{{book.publisher || "Empty"}}</span></td>
         <td><button ng-click="bc.deleteBook(book.id)">Delete</button></td>
-        <td><button ng-click="bc.saveBook(book)">Save</button></td>
       </tr>
     </tbody>
   </table>

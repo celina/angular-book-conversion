@@ -1,6 +1,11 @@
-var app = angular.module('BookApp', []);
+var app = angular.module('BookApp', ["xeditable"]);
 
-app.controller('BookController', ['$http', function($http) {
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});
+
+app.controller('BookController', ['$http', function($http, $scope) {
+
   console.log('BookController is loaded');
   var self = this;
   self.bookList = [];
